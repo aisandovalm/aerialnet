@@ -6,6 +6,9 @@ from aerialnet.utils.classes import label_classname
 
 from PIL import Image, ImageDraw, ImageFont
 import cv2
+import logging
+
+_logger = logging.getLogger(__name__)
 
 def extract_predictions(result_future, threshold=0.35):
     """Callback function.
@@ -45,10 +48,19 @@ def extract_predictions(result_future, threshold=0.35):
     return selected_boxes, selected_scores, selected_labels
 
 def parse_predictions(nn_output, font, fontsize, labels, imgArr=None, threshold=0.35, thickness=1):
-    selected_boxes, selected_scores, selected_labels = extract_predictions(nn_output, threshold)
-
     response_data = {"success": True}
     response_data["predictions"] = []
+
+    try:
+        selected_boxes, selected_scores, selected_labels = extract_predictions(nn_output, threshold)
+    except IndexError:
+        _logger.exception('Empty array while extracting predictions')
+        response_data = {"predictions": [], "success": False, "message": "Sin detecciones"}
+        return response_data, None
+    except Exception:
+        _logger.exception('Exception while extracting predictions')
+        response_data = {"predictions": [], "success": False, "message": "Sin detecciones"}
+        return response_data, None
 
     if imgArr is not None:
         img_pil = Image.fromarray(imgArr)

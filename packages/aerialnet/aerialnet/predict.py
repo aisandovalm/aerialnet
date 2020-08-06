@@ -58,7 +58,8 @@ def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath
     start = timer()
     if generateOutputImg:
         response_data, outputImg = parse_predictions(result, config.FONT, config.FONTSIZE, config.LABELS, cvImg)
-        cv2.imwrite(outputPath, outputImg)
+        if outputImg is not None:
+            cv2.imwrite(outputPath, outputImg)
     else:
         response_data, _ = parse_predictions(result, config.FONT, config.FONTSIZE, config.LABELS)
     parsing_time = round(timer() - start, 2)

@@ -27,7 +27,7 @@ def get_file_handler():
     file_handler = TimedRotatingFileHandler(
         LOG_FILE, when='midnight')
     file_handler.setFormatter(FORMATTER)
-    file_handler.setLevel(logging.WARNING)
+    file_handler.setLevel(logging.INFO)
     return file_handler
  
  

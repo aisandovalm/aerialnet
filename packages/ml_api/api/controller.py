@@ -61,7 +61,7 @@ def predict():
                 if image_bytes != "BlobNotFound":
                     if generateOutputImg:
                         outputImgPath = os.path.join(OUTPUT_FOLDER, img_url.split('/')[-1])
-                        if '.jpg' in outputImgPath:
+                        if '.jpg' in outputImgPath or '.JPG' in outputImgPath:
                             pass
                         else:
                             _logger.warning(f'Incorrect path for output image {outputImgPath}')

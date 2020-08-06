@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 import cv2
 import io
 
-from azure.storage.blob import BlockBlobService, PublicAccess
+#from azure.storage.blob import BlockBlobService, PublicAccess
 
 def read_image_bgr(path):
     """ Read an image in BGR format.
@@ -73,40 +73,3 @@ def render(img:np.ndarray, boxes, scores, labels, LABELS, thickness=1) -> np.nda
             
     img = np.array(img_pil)
     return img
-
-def send_to_blob(dir_path, img_name):
-    container_name = 'imgresult'
-    output = ""
-    
-    try:
-        # Create the BlockBlockService that is used to call the Blob service for the storage account
-        block_blob_service = BlockBlobService(account_name='droneimagesstorage', account_key='ccKnsgpaDAo1EWG0XeIJOcg6CQZIPozc0kYr11GryG9nVwf7H0G/0KrUeWhXn8XzW5lT6jFUEIycZhsDfk3wEQ==')
-        
-        # Upload the created file, use local_file_name for the blob name
-        block_blob_service.create_blob_from_path(container_name, img_name, dir_path+img_name)
-        
-        output = img_name
-    
-    except Exception as e:
-        print(e)
-        #output = str(e)
-        
-    return output
-
-def get_blob(img_name):
-    container_name = 'dronblob'
-    output = ""
-    
-    try:
-        # Create the BlockBlockService that is used to call the Blob service for the storage account
-        block_blob_service = BlockBlobService(account_name='droneimagesstorage', account_key='ccKnsgpaDAo1EWG0XeIJOcg6CQZIPozc0kYr11GryG9nVwf7H0G/0KrUeWhXn8XzW5lT6jFUEIycZhsDfk3wEQ==')
-        
-        # Download the image file
-        output = block_blob_service.get_blob_to_bytes(container_name, img_name)
-    
-    except Exception as e:
-        if str(e).find("BlobNotFound") != -1:
-            output = "BlobNotFound"
-        else:
-            output = e
-    return output
