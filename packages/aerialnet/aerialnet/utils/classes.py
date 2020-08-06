@@ -23,7 +23,7 @@ classes = [
     'Vehículo', 
     'Pickup', 
     'Camión', 
-    'Carga/Container', 
+    'Carga', 
     'Tractor', 
     'Maquinaria'
 ]

@@ -51,7 +51,7 @@ def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath
     
     request.inputs['input_image'].CopyFrom(
         tf.make_tensor_proto(inputImg, shape=inputImg.shape))
-    result = grpcStub.Predict(request, 20.0)  # 10 secs timeout
+    result = grpcStub.Predict(request, 60.0)  # 10 secs timeout
 
     processing_time = round(timer() - start, 2)
     
