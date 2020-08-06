@@ -1,0 +1,42 @@
+chmod +x scripts/run_tfserving.sh
+chmod +x scripts/install_nvidia_docker.sh
+
+
+
+
+
+
+
+
+
+Install ndivia-docker to run tfserving in GPU!
+https://github.com/NVIDIA/nvidia-docker
+
+
+sudo docker run --gpus all -p 8500:8500 -p 8501:8501 \
+--mount type=bind,source=/home/aikauel/enap/aerialnet/7_classes/saved_models,target=/models/aerialnet/1 \
+-e MODEL_NAME=aerialnet -t tensorflow/serving:latest-gpu
+
+
+
+$ curl http://localhost:8501/v1/models/aerialnet
+ "model_version_status": [
+  {
+   "version": "123",
+   "state": "AVAILABLE",
+   "status": {
+    "error_code": "OK",
+    "error_message": ""
+   }
+  }
+ ]
+}
+
+
+Client:
+docker run -it --runtime=nvidia --net=host -v "$PWD/saved_models:/coding" --rm tfserving_client
+
+
+echo 'export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu' >> ~/.bashrc
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64\
+${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}

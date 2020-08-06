@@ -1,0 +1,11 @@
+# production requirements
+numpy==1.19.1
+tensorflow==2.2.0
+opencv-python==4.3.0
+PIL==7.2.0
+tensorflow_serving
+grpc==1.30.0
+ 
+# packaging
+setuptools==40.6.3
+wheel==0.32.3
