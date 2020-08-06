@@ -40,3 +40,67 @@ grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
 	details = "Deadline Exceeded"
 	debug_error_string = "{"created":"@1596707550.370924430","description":"Error received from peer ipv4:127.0.0.1:8500","file":"src/core/lib/surface/call.cc","file_line":1055,"grpc_message":"Deadline Exceeded","grpc_status":4}"
 >
+2020-08-06 11:02:00,883 — api.controller — WARNING —predict:67 — Incorrect path for output image /home/aikauel/enap/aerialnet_project/packages/ml_api/outputs/DJI_0436.JPG
+2020-08-06 11:02:01,833 — api.controller — ERROR —predict:81 — Exception on Flask server (predict function): <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "Socket closed"
+	debug_error_string = "{"created":"@1596726121.826363655","description":"Error received from peer ipv4:127.0.0.1:8500","file":"src/core/lib/surface/call.cc","file_line":1055,"grpc_message":"Socket closed","grpc_status":14}"
+> 
+                 traceback: Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.2-py3.6.egg/aerialnet/predict.py", line 54, in make_prediction
+    result = grpcStub.Predict(request, 20.0)  # 10 secs timeout
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/grpcio-1.30.0-py3.6-linux-x86_64.egg/grpc/_channel.py", line 826, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/grpcio-1.30.0-py3.6-linux-x86_64.egg/grpc/_channel.py", line 729, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "Socket closed"
+	debug_error_string = "{"created":"@1596726121.826363655","description":"Error received from peer ipv4:127.0.0.1:8500","file":"src/core/lib/surface/call.cc","file_line":1055,"grpc_message":"Socket closed","grpc_status":14}"
+>
+Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.2-py3.6.egg/aerialnet/predict.py", line 54, in make_prediction
+    result = grpcStub.Predict(request, 20.0)  # 10 secs timeout
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/grpcio-1.30.0-py3.6-linux-x86_64.egg/grpc/_channel.py", line 826, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/grpcio-1.30.0-py3.6-linux-x86_64.egg/grpc/_channel.py", line 729, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "Socket closed"
+	debug_error_string = "{"created":"@1596726121.826363655","description":"Error received from peer ipv4:127.0.0.1:8500","file":"src/core/lib/surface/call.cc","file_line":1055,"grpc_message":"Socket closed","grpc_status":14}"
+>
+2020-08-06 11:22:59,880 — api.controller — WARNING —predict:67 — Incorrect path for output image /home/aikauel/enap/aerialnet_project/packages/ml_api/outputs/DJI_0436.JPG
+2020-08-06 11:33:31,937 — api.controller — ERROR —predict:81 — Exception on Flask server (predict function): too many values to unpack (expected 2) 
+                 traceback: Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.4-py3.6.egg/aerialnet/predict.py", line 60, in make_prediction
+    response_data, outputImg = parse_predictions(result, config.FONT, config.FONTSIZE, config.LABELS, cvImg)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.4-py3.6.egg/aerialnet/predict.py", line 60, in make_prediction
+    response_data, outputImg = parse_predictions(result, config.FONT, config.FONTSIZE, config.LABELS, cvImg)
+ValueError: too many values to unpack (expected 2)
+2020-08-06 11:35:07,789 — api.controller — ERROR —predict:81 — Exception on Flask server (predict function): OpenCV(4.3.0) /io/opencv/modules/imgcodecs/src/loadsave.cpp:738: error: (-215:Assertion failed) !_img.empty() in function 'imwrite'
+ 
+                 traceback: Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.4-py3.6.egg/aerialnet/predict.py", line 61, in make_prediction
+    cv2.imwrite(outputPath, outputImg)
+cv2.error: OpenCV(4.3.0) /io/opencv/modules/imgcodecs/src/loadsave.cpp:738: error: (-215:Assertion failed) !_img.empty() in function 'imwrite'
+
+Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.4-py3.6.egg/aerialnet/predict.py", line 61, in make_prediction
+    cv2.imwrite(outputPath, outputImg)
+cv2.error: OpenCV(4.3.0) /io/opencv/modules/imgcodecs/src/loadsave.cpp:738: error: (-215:Assertion failed) !_img.empty() in function 'imwrite'
+

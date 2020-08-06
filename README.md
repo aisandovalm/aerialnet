@@ -56,3 +56,6 @@ curl -X GET "http://192.168.1.6:5000/version"
 ```sh
 curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/avionimagefiles/2020-06-01_13-54-40_GPS.jpg" --data "output_img=1" -X POST "http://192.168.1.6:5000/predict"
 ```
+```sh
+curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/luis.pirela@kauel.com/2020/08/06/DJI_0436.JPG" --data "output_img=1" -X POST "http://192.168.1.6:5000/predict"
+```
