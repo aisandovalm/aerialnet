@@ -8,4 +8,5 @@ dist/
 build/
 *.log
 *.pb
-saved_models/variables/*"packages\aerialnet\aerialnet\utils\image.py" 
+saved_models/variables/*
+packages\aerialnet\aerialnet\utils\image.py
