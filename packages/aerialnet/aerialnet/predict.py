@@ -16,7 +16,8 @@ from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
 
 import cv2
-from PIL import Image
+from PIL import Image, ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 grpcChannel = grpc.insecure_channel(config.GRPC_SERVER)
 grpcStub = prediction_service_pb2_grpc.PredictionServiceStub(grpcChannel)

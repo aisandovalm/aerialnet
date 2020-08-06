@@ -104,3 +104,36 @@ Traceback (most recent call last):
     cv2.imwrite(outputPath, outputImg)
 cv2.error: OpenCV(4.3.0) /io/opencv/modules/imgcodecs/src/loadsave.cpp:738: error: (-215:Assertion failed) !_img.empty() in function 'imwrite'
 
+2020-08-06 17:27:09,423 — api.controller — INFO —predict:39 — New prediction request
+2020-08-06 17:27:09,424 — api.controller — INFO —predict:58 — Getting image https://droneimagesstorage.blob.core.windows.net/dronblob/antoniojosesolano2012@gmail.com/2020/08/06/2020-08-06_13:53:38-3749377-DJI_0334.jpg from blob storage
+2020-08-06 17:27:11,779 — api.controller — ERROR —predict:81 — Exception on Flask server (predict function): image file is truncated (0 bytes not processed) 
+                 traceback: Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.4-py3.6.egg/aerialnet/predict.py", line 40, in make_prediction
+    pilImg.save(img_path)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/Image.py", line 2124, in save
+    self._ensure_mutable()
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/Image.py", line 618, in _ensure_mutable
+    self._copy()
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/Image.py", line 611, in _copy
+    self.load()
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/ImageFile.py", line 257, in load
+    "(%d bytes not processed)" % len(b)
+OSError: image file is truncated (0 bytes not processed)
+Traceback (most recent call last):
+  File "/home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py", line 73, in predict
+    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/aerialnet-0.1.4-py3.6.egg/aerialnet/predict.py", line 40, in make_prediction
+    pilImg.save(img_path)
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/Image.py", line 2124, in save
+    self._ensure_mutable()
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/Image.py", line 618, in _ensure_mutable
+    self._copy()
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/Image.py", line 611, in _copy
+    self.load()
+  File "/home/aikauel/anaconda3/envs/aerialnet_env/lib/python3.6/site-packages/Pillow-7.2.0-py3.6-linux-x86_64.egg/PIL/ImageFile.py", line 257, in load
+    "(%d bytes not processed)" % len(b)
+OSError: image file is truncated (0 bytes not processed)
+2020-08-06 17:31:55,277 — api.controller — INFO —predict:39 — New prediction request
+2020-08-06 17:31:55,280 — api.controller — INFO —predict:58 — Getting image https://droneimagesstorage.blob.core.windows.net/dronblob/antoniojosesolano2012@gmail.com/2020/08/06/2020-08-06_13:53:38-3749377-DJI_0334.jpg from blob storage
