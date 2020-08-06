@@ -9,10 +9,10 @@ PACKAGE_ROOT = pathlib.Path(__file__).resolve().parent.parent
 FORMATTER = logging.Formatter(
     "%(asctime)s — %(name)s — %(levelname)s —"
     "%(funcName)s:%(lineno)d — %(message)s")
-LOG_DIR = PACKAGE_ROOT / 'logs'
+LOG_DIR = pathlib.Path(os.path.join(PACKAGE_ROOT, 'logs'))
 LOG_DIR.mkdir(exist_ok=True)
-LOG_FILE = LOG_DIR / 'ml_api.log'
-OUTPUT_FOLDER = PACKAGE_ROOT / 'outputs'
+LOG_FILE = pathlib.Path(os.path.join(LOG_DIR, 'ml_api.log'))
+OUTPUT_FOLDER = pathlib.Path(os.path.join(PACKAGE_ROOT, 'outputs'))
 OUTPUT_FOLDER.mkdir(exist_ok=True)
  
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -51,7 +51,7 @@ class Config:
     CSRF_ENABLED = True
     SECRET_KEY = 'pum-2020'
     SERVER_PORT = 5000
-    UPLOAD_FOLDER = UPLOAD_FOLDER
+    OUTPUT_FOLDER = OUTPUT_FOLDER
  
  
 class ProductionConfig(Config):

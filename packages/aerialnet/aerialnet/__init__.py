@@ -1,10 +1,10 @@
 import logging
- 
+import os
 from aerialnet.config import config
 from aerialnet.config import logging_config
  
  
-VERSION_PATH = config.PACKAGE_ROOT / 'VERSION'
+VERSION_PATH = os.path.join(config.PACKAGE_ROOT, 'VERSION')
  
 # Configure logger for use in package
 logger = logging.getLogger(__name__)

@@ -1,0 +1,9 @@
+name: aerialnet_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6.10
+  - flask=1.1.2
+  - gunicorn=19.9.0
+  - aerialnet=0.1.3

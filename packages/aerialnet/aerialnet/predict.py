@@ -53,18 +53,20 @@ def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath
         tf.make_tensor_proto(inputImg, shape=inputImg.shape))
     result = grpcStub.Predict(request, 20.0)  # 10 secs timeout
 
-    processing_time = timer() - start
+    processing_time = round(timer() - start, 2)
     
-    print('Parsing result')
+    start = timer()
     if generateOutputImg:
         response_data, outputImg = parse_predictions(result, config.FONT, config.FONTSIZE, config.LABELS, cvImg)
         cv2.imwrite(outputPath, outputImg)
     else:
         response_data, _ = parse_predictions(result, config.FONT, config.FONTSIZE, config.LABELS)
+    parsing_time = round(timer() - start, 2)
  
     _logger.info(
         f"Predicting image {imgURL} with model version: {_version} "
-        f"Processing time: {processing_time} "
+        f"Processing time: {processing_time} seconds"
+        f"Parsing time: {parsing_time} seconds"
         f"Predictions: {response_data}"
     )
  

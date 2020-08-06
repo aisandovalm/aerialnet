@@ -1,11 +1,12 @@
 # production requirements
 numpy==1.19.1
 tensorflow==2.2.0
-opencv-python==4.3.0
-PIL==7.2.0
-tensorflow_serving
-grpc==1.30.0
+opencv-python>=4.3.0
+pillow==7.2.0
+tensorflow-serving-api==2.2.0
+grpcio==1.30.0
+azure-storage-blob==1.4.0
  
 # packaging
-setuptools==40.6.3
+setuptools>=41.0.0
 wheel==0.32.3

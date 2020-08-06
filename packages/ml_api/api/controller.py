@@ -36,7 +36,7 @@ def version():
  
 @prediction_app.route('/predict', methods=['POST'])
 def predict():
-    print("predict")
+    _logger.info(f'New prediction request')
     # initialize the data dictionary that will be returned from the
     # view
     output = ""
@@ -55,7 +55,7 @@ def predict():
                 generateOutputImg = bool(0)
 
             if img_url != "":
-                print("Getting image from blob storage")
+                _logger.info(f'Getting image {img_url} from blob storage')
                 image_bytes = requests.get(img_url)
                 
                 if image_bytes != "BlobNotFound":
@@ -70,7 +70,7 @@ def predict():
                     else:
                         outputImgPath = None
 
-                    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, output_path=outputImgPath)
+                    response_data = make_prediction(image_bytes.content, imgURL=img_url, generateOutputImg=generateOutputImg, outputPath=outputImgPath)
 
                     output =  jsonify(response_data)
                 else:

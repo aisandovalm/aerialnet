@@ -3,6 +3,9 @@ utils/*
 7_classes/*
 shared_utils/*
 __pycache__/
+*.egg-info
+dist/
+build/
 
 *.pb
 saved_models/variables/*

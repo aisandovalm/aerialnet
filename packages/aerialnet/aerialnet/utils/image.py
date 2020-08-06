@@ -1,5 +1,6 @@
 from aerialnet.utils.colors import label_color
 from aerialnet.utils.classes import label_classname
+import aerialnet.config as config
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -7,10 +8,6 @@ import cv2
 import io
 
 from azure.storage.blob import BlockBlobService, PublicAccess
-
-fontpath = 'data/Ubuntu-Th.ttf' 
-fontsize=10
-font = ImageFont.truetype(fontpath, fontsize)
 
 def read_image_bgr(path):
     """ Read an image in BGR format.
@@ -72,7 +69,7 @@ def render(img:np.ndarray, boxes, scores, labels, LABELS, thickness=1) -> np.nda
         draw.rectangle([(x1,y1),(x2,y2)], outline=color, width=thickness)
         
         draw.rectangle([(x1,y1-7),(x2,y1)], outline=color, width=6)
-        draw.text((x1,y1-fontsize/2-4), text, font = font, fill=(255,255,255))
+        draw.text((x1,y1-config.FONTSIZE/2-4), text, font = config.FONT, fill=(255,255,255))
             
     img = np.array(img_pil)
     return img
