@@ -59,3 +59,6 @@ curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/avionimage
 ```sh
 curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/luis.pirela@kauel.com/2020/08/06/DJI_0436.JPG" --data "output_img=1" -X POST "http://192.168.1.6:5000/predict"
 ```
+```sh
+curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/antoniojosesolano2012@gmail.com/2020/08/06/2020-08-06_13:53:38-3749377-DJI_0334.jpg" -X POST "http://192.168.1.6:5000/predict"
+```

@@ -1,8 +1,11 @@
+import pathlib
 import os
 from PIL import Image, ImageDraw, ImageFont
+import aerialnet
  
-PWD = os.path.dirname(os.path.abspath(__file__))
-PACKAGE_ROOT = os.path.abspath(os.path.join(PWD, '..'))
+#PWD = os.path.dirname(os.path.abspath(__file__))
+#PACKAGE_ROOT = os.path.abspath(os.path.join(PWD, '..'))
+PACKAGE_ROOT = pathlib.Path(aerialnet.__file__).resolve().parent
 DATA_DIR = os.path.join(PACKAGE_ROOT, 'data')
 SAVED_MODEL_DIR = os.path.join(PACKAGE_ROOT, 'saved_models')
 
@@ -20,3 +23,5 @@ LABELS = {int(L.split(",")[1]): L.split(",")[0] for L in labels}
  
 with open(os.path.join(PACKAGE_ROOT, 'VERSION')) as version_file:
     _version = version_file.read().strip()
+
+fileLogger = None

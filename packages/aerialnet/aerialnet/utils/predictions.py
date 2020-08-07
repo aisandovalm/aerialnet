@@ -41,6 +41,9 @@ def extract_predictions(result_future, threshold=0.35):
 
     # perform non-max-supression
     included_indices = np.asarray(non_max_suppression_all_classes(sorted_boxes, sorted_scores, sorted_labels, 0.5))
+    if len(included_indices) == 0:
+        return [], [], []
+
     selected_boxes = sorted_boxes[included_indices]
     selected_scores = sorted_scores[included_indices]
     selected_labels = sorted_labels[included_indices]
@@ -53,6 +56,8 @@ def parse_predictions(nn_output, font, fontsize, labels, imgArr=None, threshold=
 
     try:
         selected_boxes, selected_scores, selected_labels = extract_predictions(nn_output, threshold)
+        if len(selected_boxes) == 0:
+            return response_data, None
     except IndexError:
         _logger.exception('Empty array while extracting predictions')
         response_data = {"predictions": [], "success": False, "message": "Sin detecciones"}

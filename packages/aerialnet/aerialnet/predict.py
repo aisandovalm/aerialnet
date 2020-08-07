@@ -16,12 +16,13 @@ from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
 
 import cv2
-from PIL import Image
+from PIL import Image, ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 grpcChannel = grpc.insecure_channel(config.GRPC_SERVER)
 grpcStub = prediction_service_pb2_grpc.PredictionServiceStub(grpcChannel)
  
-_logger = logging.getLogger(__name__)
+#_logger = logging.getLogger(__name__)
 
 def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath=None):
     """Make a prediction using a saved model pipeline.
@@ -64,11 +65,11 @@ def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath
         response_data, _ = parse_predictions(result, config.FONT, config.FONTSIZE, config.LABELS)
     parsing_time = round(timer() - start, 2)
  
-    _logger.info(
+    config.fileLogger.info(
         f"Predicting image {imgURL} with model version: {_version} "
-        f"Processing time: {processing_time} seconds"
-        f"Parsing time: {parsing_time} seconds"
-        f"Predictions: {response_data}"
+        f"Processing time: {processing_time} seconds "
+        f"Parsing time: {parsing_time} seconds "
+        f"Predictions: {response_data} "
     )
  
     return response_data

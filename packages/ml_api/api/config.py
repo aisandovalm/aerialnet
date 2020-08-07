@@ -43,7 +43,7 @@ def get_logger(*, logger_name):
     logger.propagate = False
  
     return logger
- 
+
  
 class Config:
     DEBUG = False

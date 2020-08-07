@@ -16,8 +16,10 @@ import traceback
 from api.config import get_logger, OUTPUT_FOLDER
 from api import __version__ as api_version
 from aerialnet.predict import make_prediction
- 
+import aerialnet.config as aerialnet_config
+
 _logger = get_logger(logger_name=__name__)
+aerialnet_config.fileLogger = _logger
  
 prediction_app = Blueprint('prediction_app', __name__)
  
