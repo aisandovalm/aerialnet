@@ -25,7 +25,8 @@ def get_console_handler():
  
 def get_file_handler():
     file_handler = TimedRotatingFileHandler(
-        LOG_FILE, when='midnight')
+        LOG_FILE, when='midnight', interval=1)
+    file_handler.suffix = "%Y%m%d"
     file_handler.setFormatter(FORMATTER)
     file_handler.setLevel(logging.INFO)
     return file_handler
