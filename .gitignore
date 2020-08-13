@@ -11,3 +11,4 @@ logs/
 logs/
 *.pb
 saved_models/variables/*
+notebooks/
