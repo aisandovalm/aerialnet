@@ -17,13 +17,28 @@ def label_classname(label):
         warnings.warn('Label {} has no class name, returning default.'.format(label))
         return 'Other'
 
+def label_classnumber(label):
+    """ Return a class name from a set of predefined classes names. Contains 7 classes in total.
+
+    Args
+        label: The label to get the class for.
+
+    Returns
+        A string with the name of the class related to the label.
+
+    """
+    return classes.index(label)
 
 classes = [
     'Techo', 
     'Vehículo', 
     'Pickup', 
     'Camión', 
-    'Carga', 
+    'Carga/Container', 
     'Tractor', 
-    'Maquinaria'
+    'Maquinaria',
+    'Animal',
+    'Tuberia',
+    'Juegos',
+    'Piscina'
 ]

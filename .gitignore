@@ -1,6 +1,8 @@
 utils/*
 4_classes/*
 7_classes/*
+8_classes/*
+11_classes/*
 shared_utils/*
 __pycache__/
 *.egg-info
@@ -9,4 +11,5 @@ build/
 logs/
 *.log
 *.pb
+*.7z
 saved_models/variables/*
