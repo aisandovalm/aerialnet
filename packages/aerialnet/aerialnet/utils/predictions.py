@@ -50,6 +50,41 @@ def extract_predictions(result_future, threshold=0.35):
 
     return selected_boxes, selected_scores, selected_labels
 
+def size_filter(box, label):
+    """
+        Return True if prediction must be eliminated (filtered), False otherwise
+    """
+    MAX_SIZE_CAMION = [700, 100] # 3
+    MAX_SIZE_CARGA = [400, 80] # 4
+    MAX_SIZE_MAQUINARIA = [600, 120] # 6
+
+    width = box[2]- box[0]
+    height = box[3] - box[1]
+
+    realWidth = max(width, height)
+    realHeight = min(width, height)
+
+    '''if label in [3, 4, 6]:
+        print('{} with width={} and height={}'.format(classes[label], realWidth, realHeight))'''
+
+    if label == 3:
+        if realWidth > MAX_SIZE_CAMION[0] or realHeight > MAX_SIZE_CAMION[0]:
+            return True
+        else:
+            return False
+    elif label == 4:
+        if realWidth > MAX_SIZE_CARGA[0] or realHeight > MAX_SIZE_CARGA[0]:
+            return True
+        else:
+            return False
+    elif label == 6:
+        if realWidth > MAX_SIZE_MAQUINARIA[0] or realHeight > MAX_SIZE_MAQUINARIA[0]:
+            return True
+        else:
+            return False
+    else:
+        return False
+
 def parse_predictions(nn_output, font, fontsize, labels, imgArr=None, threshold=0.35, thickness=1):
     response_data = {"success": True}
     response_data["predictions"] = []
@@ -73,27 +108,32 @@ def parse_predictions(nn_output, font, fontsize, labels, imgArr=None, threshold=
 
     # loop over detections
     for (bbox, score, label) in zip(selected_boxes, selected_scores, selected_labels):
-        # convert bounding box coordinates from float to int
-        bbox = bbox.astype(int)
-        predicted_class = label_classname(int(labels[label]))
-        score = int(score*100)
-        x1 = int(bbox[0])
-        y1 = int(bbox[1])
-        x2 = int(bbox[2])
-        y2 = int(bbox[3])
+        if label not in [7, 8, 9, 10]:
+            # filter excesively large bboxes
+            if size_filter(bbox, label):
+                continue
 
-        # append prediction
-        c_prediction = {"label": predicted_class, "score": score, "x1": x1, "y1": y1, 
-        "x2": x2, "y2": y2, "xc": int(x1 + (x2-x1)/2), "yc": int(y1 + (y2-y1)/2)}
-        response_data["predictions"].append(c_prediction)
-        
-        if imgArr is not None:
-            text = predicted_class + ' {}%'.format(score)
-            #Determina el color de la marca en base a la clase
-            color = label_color(label)
-            draw.rectangle([(x1,y1),(x2,y2)], outline=color, width=thickness)
-            draw.rectangle([(x1,y1-7),(x2,y1)], outline=color, width=6)
-            draw.text((x1,y1-fontsize/2-4), text, font = font, fill=(255,255,255))
+            # convert bounding box coordinates from float to int
+            bbox = bbox.astype(int)
+            predicted_class = label_classname(int(labels[label]))
+            score = int(score*100)
+            x1 = int(bbox[0])
+            y1 = int(bbox[1])
+            x2 = int(bbox[2])
+            y2 = int(bbox[3])
+
+            # append prediction
+            c_prediction = {"label": predicted_class, "score": score, "x1": x1, "y1": y1, 
+            "x2": x2, "y2": y2, "xc": int(x1 + (x2-x1)/2), "yc": int(y1 + (y2-y1)/2)}
+            response_data["predictions"].append(c_prediction)
+            
+            if imgArr is not None:
+                text = predicted_class + ' {}%'.format(score)
+                #Determina el color de la marca en base a la clase
+                color = label_color(label)
+                draw.rectangle([(x1,y1),(x2,y2)], outline=color, width=thickness)
+                draw.rectangle([(x1,y1-7),(x2,y1)], outline=color, width=6)
+                draw.text((x1,y1-fontsize/2-4), text, font = font, fill=(255,255,255))
             
     if imgArr is not None:
         outputImg = np.array(img_pil)
