@@ -40,7 +40,7 @@ def extract_predictions(result_future, threshold=0.35):
     sorted_labels = threshold_labels[sorted_mask]
 
     # perform non-max-supression
-    included_indices = np.asarray(non_max_suppression_all_classes(sorted_boxes, sorted_scores, sorted_labels, 0.5))
+    included_indices = np.asarray(non_max_suppression_all_classes(sorted_boxes, sorted_scores, sorted_labels, 0.35))
     if len(included_indices) == 0:
         return [], [], []
 
