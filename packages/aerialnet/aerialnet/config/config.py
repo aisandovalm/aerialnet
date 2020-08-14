@@ -1,7 +1,8 @@
 import pathlib
-import os
+import os, sys
 from PIL import Image, ImageDraw, ImageFont
 import aerialnet
+from aerialnet.utils.azure_upload import AzureClient
  
 #PWD = os.path.dirname(os.path.abspath(__file__))
 #PACKAGE_ROOT = os.path.abspath(os.path.join(PWD, '..'))
@@ -22,6 +23,18 @@ labels = open(os.path.join(DATA_DIR, 'classes.csv')).read().strip().split('\n')
 LABELS = {int(L.split(",")[1]): L.split(",")[0] for L in labels}
  
 with open(os.path.join(PACKAGE_ROOT, 'VERSION')) as version_file:
-    _version = version_file.read().strip()
+  _version = version_file.read().strip()
 
 fileLogger = None
+
+# Azure config
+try:
+  with open(os.path.join(PACKAGE_ROOT, 'data/AZURE_STORAGE')) as version_file:
+    AZURE_STORAGE_CONNECTION_STRING = version_file.read()
+
+  CONTAINER_NAME = "aihistory"
+except KeyError:
+  print('AZURE_STORAGE_CONNECTION_STRING must be set inside a file: data/AZURE_STORAGE')
+  sys.exit(1)
+
+azureClient = AzureClient(AZURE_STORAGE_CONNECTION_STRING, CONTAINER_NAME, _version)
