@@ -3,6 +3,7 @@ import numpy as np
 from aerialnet.utils.nms import non_max_suppression_all_classes
 from aerialnet.utils.colors import label_color
 from aerialnet.utils.classes import label_classname
+import aerialnet.config as config
 
 from PIL import Image, ImageDraw, ImageFont
 import cv2
@@ -85,7 +86,7 @@ def size_filter(box, label):
     else:
         return False
 
-def parse_predictions(nn_output, font, fontsize, labels, imgArr=None, threshold=0.35, thickness=1):
+def parse_predictions(nn_output, imgURL, font, fontsize, labels, imgArr=None, threshold=0.35, thickness=1):
     response_data = {"success": True}
     response_data["predictions"] = []
 
@@ -106,7 +107,12 @@ def parse_predictions(nn_output, font, fontsize, labels, imgArr=None, threshold=
         img_pil = Image.fromarray(imgArr)
         draw = ImageDraw.Draw(img_pil)
 
+    # Upload predictions
+    config.azureClient.upload_predictions(imgURL, selected_boxes, selected_scores, selected_labels)
+    print('Predictions sent to blob storage')
+
     # loop over detections
+    print('Looping predictions')
     for (bbox, score, label) in zip(selected_boxes, selected_scores, selected_labels):
         if label not in [7, 8, 9, 10]:
             # filter excesively large bboxes

@@ -15,3 +15,5 @@ logs/
 notebooks/
 *.7z
 saved_models/variables/*
+AZURE_STORAGE
+via_ann.json
