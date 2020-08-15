@@ -3,10 +3,10 @@
 # Building packages and uploading them to a Gemfury repository
  
 # Uninstall previous version of azure
-pip uninstall azure-common
-pip uninstall azure-storage
-pip uninstall azure-nspkg
-pip uninstall azure-storage-blob
+#pip uninstall azure-common
+#pip uninstall azure-storage
+#pip uninstall azure-nspkg
+#pip uninstall azure-storage-blob
 
 set -e
  

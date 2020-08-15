@@ -1,5 +1,6 @@
 import os
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+from azure.storage.blob._generated.models._models_py3 import StorageErrorException
 from datetime import date
 import threading
 from aerialnet.utils.classes import label_classname
@@ -16,8 +17,12 @@ class AzureClient:
         Upload a single file to a path inside the container
         '''
         print(f'Uploading {source} to {blobDst}')
-        with open(source, 'rb') as data:
-            self.client.upload_blob(name=blobDst, data=data)
+        try:
+            with open(source, 'rb') as data:
+                self.client.upload_blob(name=blobDst, data=data, overwrite=True)
+        except StorageErrorException:
+            pass
+
 
     def data_formatting(self, imgURL, selected_boxes, selected_labels):
         file_attributes = {"model_version": self.modelVersion}
