@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
- 
-export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=https;AccountName=droneimagesstorage;AccountKey=ccKnsgpaDAo1EWG0XeIJOcg6CQZIPozc0kYr11GryG9nVwf7H0G/0KrUeWhXn8XzW5lT6jFUEIycZhsDfk3wEQ==;EndpointSuffix=core.windows.net"
