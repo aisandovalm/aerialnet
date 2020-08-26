@@ -16,5 +16,5 @@ logs/
 saved_models/variables/*
 AZURE_STORAGE
 via_ann.json
-enap_dataset/*
+datasets/local_data/enap_dataset/*
 .vscode/*
