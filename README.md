@@ -6,6 +6,7 @@ chmod +x scripts/install_aerialnet.sh
 chmod +x packages/ml_api/run.sh
 chmod +x scripts/run_tfserving.sh
 chmod +x scripts/install_nvidia_docker.sh
+chmod +x scripts/set_azure_account.sh
 ```
 
 ## 2. Install nvidia-docker
@@ -48,11 +49,18 @@ cd packages/ml_api
 
 ## 9. Test app
 ```sh
-curl -X GET "http://192.168.1.6:5000/health"
+curl -X GET "http://192.168.1.5:5000/health"
+curl -X GET "http://localhost:5000/health"
 ```
 ```sh
-curl -X GET "http://192.168.1.6:5000/version"
+curl -X GET "http://192.168.1.5:5000/version"
 ```
 ```sh
-curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/avionimagefiles/2020-06-01_13-54-40_GPS.jpg" --data "output_img=1" -X POST "http://192.168.1.6:5000/predict"
+curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/avionimagefiles/2020-06-01_13-54-40_GPS.jpg" --data "output_img=1" -X POST "http://192.168.1.5:5000/predict"
+curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/avionimagefiles/2020-06-01_13-54-40_GPS.jpg" --data "output_img=1" -X POST "http://localhost:5000/predict"
+curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/andresepachecog@gmail.com/2020/08/11/2020-08-11_08:50:24-3692280-DJI_0339.jpg" --data "output_img=1" -X POST "http://localhost:5000/predict"
+```
+```sh
+curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/luis.pirela@kauel.com/2020/08/06/DJI_0436.JPG" --data "output_img=1" -X POST "http://192.168.1.5:5000/predict"
+curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/luis.pirela@kauel.com/2020/08/06/DJI_0436.JPG" --data "output_img=1" -X POST "http://localhost:5000/predict"
 ```

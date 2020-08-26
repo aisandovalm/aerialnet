@@ -3,4 +3,5 @@ flask==1.1.2
 # deployment
 gunicorn==19.9.0
 # ml
-aerialnet==0.1.2
+#aerialnet==0.1.4
+azure-storage-blob
