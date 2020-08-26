@@ -10,7 +10,9 @@ dist/
 build/
 logs/
 *.log
+logs/
 *.pb
+notebooks/
 *.7z
 saved_models/variables/*
 AZURE_STORAGE
