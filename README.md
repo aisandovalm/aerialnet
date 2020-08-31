@@ -66,3 +66,8 @@ curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/l
 ```
 
 AI model was trained using the RetinaNet implementation from fizyr.com: https://github.com/fizyr/keras-retinanet
+
+Example results:
+![](examples/aerialnet1.jpg)
+![](examples/aerialnet2.jpg)
+![](examples/aerialnet3.jpg)
