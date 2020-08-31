@@ -64,3 +64,5 @@ curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/a
 curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/luis.pirela@kauel.com/2020/08/06/DJI_0436.JPG" --data "output_img=1" -X POST "http://192.168.1.5:5000/predict"
 curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/luis.pirela@kauel.com/2020/08/06/DJI_0436.JPG" --data "output_img=1" -X POST "http://localhost:5000/predict"
 ```
+
+AI model was trained using the RetinaNet implementation from fizyr.com: https://github.com/fizyr/keras-retinanet
