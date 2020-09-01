@@ -33,7 +33,7 @@ def health():
 @prediction_app.route('/version', methods=['GET'])
 def version():
     if request.method == 'GET':
-        return jsonify({'model_version': 1,
+        return jsonify({'model_version': 3,
                         'api_version': api_version})
  
 @prediction_app.route('/predict', methods=['POST'])

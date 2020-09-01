@@ -30,15 +30,12 @@ def label_classnumber(label):
     return classes.index(label)
 
 classes = [
-    'Techo', 
     'Vehículo', 
-    'Pickup', 
-    'Camión', 
-    'Carga/Container', 
+    'Camión',
     'Tractor', 
     'Maquinaria',
     'Animal',
     'Tuberia',
-    'Juegos',
-    'Piscina'
+    'Escombro',
+    'EstrucMetal'
 ]
