@@ -16,7 +16,7 @@ class AzureClient:
         '''
         Upload a single file to a path inside the container
         '''
-        print(f'Uploading {source} to {blobDst}')
+        #print(f'Uploading {source} to {blobDst}')
         try:
             with open(source, 'rb') as data:
                 self.client.upload_blob(name=blobDst, data=data, overwrite=True)
@@ -59,6 +59,6 @@ class AzureClient:
         self.upload_file(jsonFile, blobDst)
 
     def upload_predictions(self, imgURL, selected_boxes, selected_scores, selected_labels):
-        print('Creating upload thread')
+        #print('Creating upload thread')
         uploadThread = threading.Thread(target=self.upload_data, args=(imgURL, selected_boxes, selected_labels,))
         uploadThread.start()

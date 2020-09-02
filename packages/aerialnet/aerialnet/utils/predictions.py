@@ -109,10 +109,8 @@ def parse_predictions(nn_output, imgURL, font, fontsize, labels, imgArr=None, th
 
     # Upload predictions
     config.azureClient.upload_predictions(imgURL, selected_boxes, selected_scores, selected_labels)
-    print('Predictions sent to blob storage')
 
     # loop over detections
-    print('Looping predictions')
     for (bbox, score, label) in zip(selected_boxes, selected_scores, selected_labels):
         if label not in [7, 8, 9, 10]:
             # filter excesively large bboxes
