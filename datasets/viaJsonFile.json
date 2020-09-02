@@ -1,0 +1,389 @@
+[
+    {
+        "filename": "https://droneimagesstorage.blob.core.windows.net/dronblob/antoniojosesolano2012@gmail.com/2020/08/18/2020-08-17_12:47:56-5254563-DJI_0992.jpg",
+        "size": "-1",
+        "regions": [
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2126,
+                    "y": 232,
+                    "width": 332,
+                    "height": 404
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1090,
+                    "y": 577,
+                    "width": 685,
+                    "height": 584
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 846,
+                    "y": 0,
+                    "width": 727,
+                    "height": 537
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2227,
+                    "y": 1122,
+                    "width": 447,
+                    "height": 407
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2739,
+                    "y": 2079,
+                    "width": 231,
+                    "height": 103
+                },
+                "region_attributes": {
+                    "clase": "Tuberia",
+                    "map_to_class_id": 8
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1372,
+                    "y": 984,
+                    "width": 124,
+                    "height": 95
+                },
+                "region_attributes": {
+                    "clase": "Carga/Container",
+                    "map_to_class_id": 4
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1136,
+                    "y": 337,
+                    "width": 110,
+                    "height": 139
+                },
+                "region_attributes": {
+                    "clase": "Piscina",
+                    "map_to_class_id": 10
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1659,
+                    "y": 822,
+                    "width": 94,
+                    "height": 107
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            }
+        ],
+        "file_attributes": {
+            "model_version": "0.2.8"
+        }
+    },
+    {
+        "filename": "https://droneimagesstorage.blob.core.windows.net/dronblob/antoniojosesolano2012@gmail.com/2020/08/18/2020-08-17_12:48:00-5531522-DJI_0993.jpg",
+        "size": "-1",
+        "regions": [
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2251,
+                    "y": 2511,
+                    "width": 477,
+                    "height": 427
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2248,
+                    "y": 1156,
+                    "width": 89,
+                    "height": 149
+                },
+                "region_attributes": {
+                    "clase": "Pickup",
+                    "map_to_class_id": 2
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2233,
+                    "y": 1661,
+                    "width": 304,
+                    "height": 395
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1422,
+                    "y": 494,
+                    "width": 313,
+                    "height": 308
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1097,
+                    "y": 1968,
+                    "width": 659,
+                    "height": 541
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1400,
+                    "y": 2378,
+                    "width": 111,
+                    "height": 84
+                },
+                "region_attributes": {
+                    "clase": "Carga/Container",
+                    "map_to_class_id": 4
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1359,
+                    "y": 1850,
+                    "width": 124,
+                    "height": 83
+                },
+                "region_attributes": {
+                    "clase": "Carga/Container",
+                    "map_to_class_id": 4
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2025,
+                    "y": 1282,
+                    "width": 86,
+                    "height": 106
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 786,
+                    "y": 813,
+                    "width": 37,
+                    "height": 43
+                },
+                "region_attributes": {
+                    "clase": "Animal",
+                    "map_to_class_id": 7
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2057,
+                    "y": 2828,
+                    "width": 35,
+                    "height": 54
+                },
+                "region_attributes": {
+                    "clase": "Animal",
+                    "map_to_class_id": 7
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2139,
+                    "y": 2697,
+                    "width": 61,
+                    "height": 56
+                },
+                "region_attributes": {
+                    "clase": "Animal",
+                    "map_to_class_id": 7
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1005,
+                    "y": 675,
+                    "width": 117,
+                    "height": 61
+                },
+                "region_attributes": {
+                    "clase": "Vehículo",
+                    "map_to_class_id": 1
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2075,
+                    "y": 2647,
+                    "width": 50,
+                    "height": 44
+                },
+                "region_attributes": {
+                    "clase": "Animal",
+                    "map_to_class_id": 7
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1848,
+                    "y": 191,
+                    "width": 254,
+                    "height": 201
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 828,
+                    "y": 995,
+                    "width": 750,
+                    "height": 900
+                },
+                "region_attributes": {
+                    "clase": "Techo",
+                    "map_to_class_id": 0
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 1689,
+                    "y": 2182,
+                    "width": 99,
+                    "height": 140
+                },
+                "region_attributes": {
+                    "clase": "Carga/Container",
+                    "map_to_class_id": 4
+                }
+            }
+        ],
+        "file_attributes": {
+            "model_version": "0.2.8"
+        }
+    },
+    {
+        "filename": "https://droneimagesstorage.blob.core.windows.net/dronblob/antoniojosesolano2012@gmail.com/2020/08/18/2020-08-17_13:07:40-4771333-DJI_0997.jpg",
+        "size": "-1",
+        "regions": [
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 3593,
+                    "y": 2470,
+                    "width": 91,
+                    "height": 59
+                },
+                "region_attributes": {
+                    "clase": "Animal",
+                    "map_to_class_id": 7
+                }
+            },
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 2485,
+                    "y": 346,
+                    "width": 71,
+                    "height": 58
+                },
+                "region_attributes": {
+                    "clase": "Animal",
+                    "map_to_class_id": 7
+                }
+            }
+        ],
+        "file_attributes": {
+            "model_version": "0.2.8"
+        }
+    },
+    {
+        "filename": "https://droneimagesstorage.blob.core.windows.net/dronblob/antoniojosesolano2012@gmail.com/2020/08/18/2020-08-17_13:13:06-4946611-DJI_0001.jpg",
+        "size": "-1",
+        "regions": [
+            {
+                "shape_attributes": {
+                    "name": "rect",
+                    "x": 653,
+                    "y": 2537,
+                    "width": 139,
+                    "height": 248
+                },
+                "region_attributes": {
+                    "clase": "Tuberia",
+                    "map_to_class_id": 8
+                }
+            }
+        ],
+        "file_attributes": {
+            "model_version": "0.2.8"
+        }
+    }
+]

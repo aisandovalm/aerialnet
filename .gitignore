@@ -12,8 +12,15 @@ logs/
 *.log
 logs/
 *.pb
-notebooks/
 *.7z
+*.jpg
+*.JPG
 saved_models/variables/*
 AZURE_STORAGE
 via_ann.json
+*/viaJson.json
+*/viaJsonFile.json
+datasets/local_data/enap_dataset/*
+.vscode/*
+trainings/*
+.ipynb_checkpoints/*

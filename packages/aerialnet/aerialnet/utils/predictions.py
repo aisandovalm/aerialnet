@@ -112,10 +112,18 @@ def parse_predictions(nn_output, imgURL, font, fontsize, labels, imgArr=None, th
 
     # loop over detections
     for (bbox, score, label) in zip(selected_boxes, selected_scores, selected_labels):
-        if label not in [7, 8, 9, 10]:
+        ''' 0,Vehículo
+            1,Camión
+            2,Tractor
+            3,Maquinaria
+            4,Animal
+            5,Tuberia
+            6,Escombro
+            7,EstrucMetal'''
+        if label not in [4,5,6,7]:
             # filter excesively large bboxes
-            if size_filter(bbox, label):
-                continue
+            '''if size_filter(bbox, label):
+                continue'''
 
             # convert bounding box coordinates from float to int
             bbox = bbox.astype(int)

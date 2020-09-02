@@ -24,6 +24,7 @@ grpcStub = prediction_service_pb2_grpc.PredictionServiceStub(grpcChannel)
  
 #_logger = logging.getLogger(__name__)
 
+THRESHOLD = 0.53
 def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath=None):
     """Make a prediction using a saved model pipeline.
  
@@ -52,17 +53,17 @@ def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath
     
     request.inputs['input_image'].CopyFrom(
         tf.make_tensor_proto(inputImg, shape=inputImg.shape))
-    result = grpcStub.Predict(request, 60.0)  # 10 secs timeout
+    result = grpcStub.Predict(request, 60.0)  # 60 secs timeout
 
     processing_time = round(timer() - start, 2)
     
     start = timer()
     if generateOutputImg:
-        response_data, outputImg = parse_predictions(result, imgURL, config.FONT, config.FONTSIZE, config.LABELS, cvImg)
+        response_data, outputImg = parse_predictions(result, imgURL, config.FONT, config.FONTSIZE, config.LABELS, cvImg, threshold=THRESHOLD)
         if outputImg is not None:
             cv2.imwrite(outputPath, outputImg)
     else:
-        response_data, _ = parse_predictions(result, imgURL, config.FONT, config.FONTSIZE, config.LABELS)
+        response_data, _ = parse_predictions(result, imgURL, config.FONT, config.FONTSIZE, config.LABELS, threshold=THRESHOLD)
     parsing_time = round(timer() - start, 2)
  
     config.fileLogger.info(

@@ -31,9 +31,6 @@ def non_max_suppression_all_classes(boxes, scores, labels, iou_threshold=0.5):
         obj1_box, _, obj1_label = boxes[i], scores[i], labels[i]
         for j in range(i+1,len(boxes)):
             obj2_box, _, obj2_label = boxes[j], scores[j], labels[j]
-            # camion y carga pueden traslaparse
-            if obj1_label != obj2_label and (obj1_label == 3 and obj2_label == 4 or obj1_label == 4 and obj2_label == 3 ):
-                continue
             if (get_iou(obj1_box, obj2_box) > iou_threshold):
                 #print('excluding idx={}, class={}, score={}, bbox={}'.format(j, obj2_label, obj2_score, obj2_box))
                 excluded_indices.append(j)
