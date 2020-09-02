@@ -65,6 +65,17 @@ curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/l
 curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/dronblob/luis.pirela@kauel.com/2020/08/06/DJI_0436.JPG" --data "output_img=1" -X POST "http://localhost:5000/predict"
 ```
 
+## Useful commands to update AI
+1. Get api ID and kill it:
+    ```sh
+    ps aux | grep gunicorn
+    kill -9 ID
+    ```
+2. Upload saved_models.7z and uncompress it:
+    ```sh
+    7z x saved_model.7z
+    ```
+
 AI model was trained using the RetinaNet implementation from fizyr.com: https://github.com/fizyr/keras-retinanet
 
 Example results:
