@@ -24,3 +24,8 @@ datasets/local_data/enap_dataset/*
 .vscode/*
 trainings/*
 notebooks/.ipynb_checkpoints/*
+test.csv
+train.csv
+val.csv
+*viaJsonFile*
+*/via_export_json.json

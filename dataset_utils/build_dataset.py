@@ -127,6 +127,8 @@ if args['mode'] == 'train':
     OUTPUT_CSV_TRAIN = args['trainFilePath']
     OUTPUT_CSV_VAL = args['valFilePath']
 
+    CLASSES_FILE = args['classesFilePath']
+
     PATCH_SIZE = args["patchSize"]
     STRIDE = PATCH_SIZE-200
     train_val_split = args["split"]
@@ -155,8 +157,8 @@ if args["mode"] == 'train':
         fileList.extend(jsonFiles)
     print('[INFO] Found {} annotation files (JSON): {}'.format(len(fileList), fileList))
 
-    '''
-    sys.exit()'''
+    
+    #sys.exit()
     random.seed(0.1)
 
     # annotation objects

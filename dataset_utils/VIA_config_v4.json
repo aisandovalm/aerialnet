@@ -1,1 +1,389 @@
-{"_via_settings":{"ui":{"annotation_editor_height":25,"annotation_editor_fontsize":0.8,"leftsidebar_width":18,"image_grid":{"img_height":80,"rshape_fill":"none","rshape_fill_opacity":0.3,"rshape_stroke":"yellow","rshape_stroke_width":2,"show_region_shape":true,"show_image_policy":"all"},"image":{"region_label":"clase","region_color":"clase","region_label_font":"10px Sans","on_image_annotation_editor_placement":"NEAR_REGION"}},"core":{"buffer_size":18,"filepath":{},"default_filepath":""},"project":{"name":"ENAP2.0"}},"_via_img_metadata":{},"_via_attributes":{"region":{"clase":{"type":"dropdown","description":"","options":{"Vehículo":"0. Vehículo","Camión":"1. Camión","Tractor":"2. Tractor","Maquinaria":"3. Maquinaria","Animal":"4. Animal","Tuberia":"5. Tuberia","Escombro":"6. Escombro","EstrucMetal":"8. EstrucMetal","PalletCaja":"9. PalletCaja","Juegos":"7. Juegos","GHorquilla":"10. GHorquilla"},"default_options":{"Escombro":true}},"map_to_class_id":{"type":"text"}},"file":{"0":{"type":"text"},"1":{"type":"text"},"2":{"type":"text"},"3":{"type":"text"},"4":{"type":"text"},"5":{"type":"text"},"6":{"type":"text"},"7":{"type":"text"},"8":{"type":"text"},"9":{"type":"text"},"10":{"type":"text"},"11":{"type":"text"},"12":{"type":"text"},"13":{"type":"text"},"14":{"type":"text"},"15":{"type":"text"},"16":{"type":"text"},"17":{"type":"text"},"18":{"type":"text"},"19":{"type":"text"},"20":{"type":"text"},"21":{"type":"text"},"22":{"type":"text"},"23":{"type":"text"},"24":{"type":"text"},"25":{"type":"text"},"26":{"type":"text"},"27":{"type":"text"},"28":{"type":"text"},"29":{"type":"text"},"30":{"type":"text"},"31":{"type":"text"},"32":{"type":"text"},"33":{"type":"text"},"34":{"type":"text"},"35":{"type":"text"},"36":{"type":"text"},"37":{"type":"text"},"38":{"type":"text"},"39":{"type":"text"},"40":{"type":"text"},"41":{"type":"text"},"42":{"type":"text"},"43":{"type":"text"},"44":{"type":"text"},"45":{"type":"text"},"46":{"type":"text"},"47":{"type":"text"},"48":{"type":"text"},"49":{"type":"text"},"50":{"type":"text"},"51":{"type":"text"},"52":{"type":"text"},"53":{"type":"text"},"54":{"type":"text"},"55":{"type":"text"},"56":{"type":"text"},"57":{"type":"text"},"58":{"type":"text"},"59":{"type":"text"},"60":{"type":"text"},"61":{"type":"text"},"62":{"type":"text"},"63":{"type":"text"},"64":{"type":"text"},"65":{"type":"text"},"66":{"type":"text"},"67":{"type":"text"},"68":{"type":"text"},"69":{"type":"text"},"70":{"type":"text"},"71":{"type":"text"},"72":{"type":"text"},"73":{"type":"text"},"74":{"type":"text"},"75":{"type":"text"},"76":{"type":"text"},"77":{"type":"text"},"78":{"type":"text"},"79":{"type":"text"},"80":{"type":"text"},"81":{"type":"text"},"82":{"type":"text"},"83":{"type":"text"},"84":{"type":"text"},"85":{"type":"text"},"86":{"type":"text"},"87":{"type":"text"},"88":{"type":"text"},"89":{"type":"text"},"90":{"type":"text"},"91":{"type":"text"},"92":{"type":"text"},"93":{"type":"text"},"94":{"type":"text"},"95":{"type":"text"},"96":{"type":"text"},"97":{"type":"text"},"98":{"type":"text"},"99":{"type":"text"},"100":{"type":"text"},"101":{"type":"text"},"102":{"type":"text"},"103":{"type":"text"},"104":{"type":"text"},"105":{"type":"text"},"106":{"type":"text"},"107":{"type":"text"},"108":{"type":"text"}}}}
+{
+    "_via_settings": {
+        "ui": {
+            "annotation_editor_height": 25,
+            "annotation_editor_fontsize": 0.8,
+            "leftsidebar_width": 18,
+            "image_grid": {
+                "img_height": 80,
+                "rshape_fill": "none",
+                "rshape_fill_opacity": 0.3,
+                "rshape_stroke": "yellow",
+                "rshape_stroke_width": 2,
+                "show_region_shape": true,
+                "show_image_policy": "all"
+            },
+            "image": {
+                "region_label": "clase",
+                "region_color": "clase",
+                "region_label_font": "10px Sans",
+                "on_image_annotation_editor_placement": "NEAR_REGION"
+            }
+        },
+        "core": {
+            "buffer_size": 18,
+            "filepath": {},
+            "default_filepath": ""
+        },
+        "project": {
+            "name": "ENAP2.0"
+        }
+    },
+    "_via_img_metadata": {},
+    "_via_attributes": {
+        "region": {
+            "clase": {
+                "type": "dropdown",
+                "description": "",
+                "options": {
+                    "Vehículo": "0. Vehículo",
+                    "Camión": "1. Camión",
+                    "Tractor": "2. Tractor",
+                    "Maquinaria": "3. Maquinaria",
+                    "Animal": "4. Animal",
+                    "Tuberia": "5. Tuberia",
+                    "Escombro": "6. Escombro",
+                    "EstrucMetal": "8. EstrucMetal",
+                    "PalletCaja": "9. PalletCaja",
+                    "Juegos": "7. Juegos",
+                    "GHorquilla": "10. GHorquilla"
+                },
+                "default_options": {
+                    "Escombro": true
+                }
+            },
+            "map_to_class_id": {
+                "type": "text"
+            }
+        },
+        "file": {
+            "0": {
+                "type": "text"
+            },
+            "1": {
+                "type": "text"
+            },
+            "2": {
+                "type": "text"
+            },
+            "3": {
+                "type": "text"
+            },
+            "4": {
+                "type": "text"
+            },
+            "5": {
+                "type": "text"
+            },
+            "6": {
+                "type": "text"
+            },
+            "7": {
+                "type": "text"
+            },
+            "8": {
+                "type": "text"
+            },
+            "9": {
+                "type": "text"
+            },
+            "10": {
+                "type": "text"
+            },
+            "11": {
+                "type": "text"
+            },
+            "12": {
+                "type": "text"
+            },
+            "13": {
+                "type": "text"
+            },
+            "14": {
+                "type": "text"
+            },
+            "15": {
+                "type": "text"
+            },
+            "16": {
+                "type": "text"
+            },
+            "17": {
+                "type": "text"
+            },
+            "18": {
+                "type": "text"
+            },
+            "19": {
+                "type": "text"
+            },
+            "20": {
+                "type": "text"
+            },
+            "21": {
+                "type": "text"
+            },
+            "22": {
+                "type": "text"
+            },
+            "23": {
+                "type": "text"
+            },
+            "24": {
+                "type": "text"
+            },
+            "25": {
+                "type": "text"
+            },
+            "26": {
+                "type": "text"
+            },
+            "27": {
+                "type": "text"
+            },
+            "28": {
+                "type": "text"
+            },
+            "29": {
+                "type": "text"
+            },
+            "30": {
+                "type": "text"
+            },
+            "31": {
+                "type": "text"
+            },
+            "32": {
+                "type": "text"
+            },
+            "33": {
+                "type": "text"
+            },
+            "34": {
+                "type": "text"
+            },
+            "35": {
+                "type": "text"
+            },
+            "36": {
+                "type": "text"
+            },
+            "37": {
+                "type": "text"
+            },
+            "38": {
+                "type": "text"
+            },
+            "39": {
+                "type": "text"
+            },
+            "40": {
+                "type": "text"
+            },
+            "41": {
+                "type": "text"
+            },
+            "42": {
+                "type": "text"
+            },
+            "43": {
+                "type": "text"
+            },
+            "44": {
+                "type": "text"
+            },
+            "45": {
+                "type": "text"
+            },
+            "46": {
+                "type": "text"
+            },
+            "47": {
+                "type": "text"
+            },
+            "48": {
+                "type": "text"
+            },
+            "49": {
+                "type": "text"
+            },
+            "50": {
+                "type": "text"
+            },
+            "51": {
+                "type": "text"
+            },
+            "52": {
+                "type": "text"
+            },
+            "53": {
+                "type": "text"
+            },
+            "54": {
+                "type": "text"
+            },
+            "55": {
+                "type": "text"
+            },
+            "56": {
+                "type": "text"
+            },
+            "57": {
+                "type": "text"
+            },
+            "58": {
+                "type": "text"
+            },
+            "59": {
+                "type": "text"
+            },
+            "60": {
+                "type": "text"
+            },
+            "61": {
+                "type": "text"
+            },
+            "62": {
+                "type": "text"
+            },
+            "63": {
+                "type": "text"
+            },
+            "64": {
+                "type": "text"
+            },
+            "65": {
+                "type": "text"
+            },
+            "66": {
+                "type": "text"
+            },
+            "67": {
+                "type": "text"
+            },
+            "68": {
+                "type": "text"
+            },
+            "69": {
+                "type": "text"
+            },
+            "70": {
+                "type": "text"
+            },
+            "71": {
+                "type": "text"
+            },
+            "72": {
+                "type": "text"
+            },
+            "73": {
+                "type": "text"
+            },
+            "74": {
+                "type": "text"
+            },
+            "75": {
+                "type": "text"
+            },
+            "76": {
+                "type": "text"
+            },
+            "77": {
+                "type": "text"
+            },
+            "78": {
+                "type": "text"
+            },
+            "79": {
+                "type": "text"
+            },
+            "80": {
+                "type": "text"
+            },
+            "81": {
+                "type": "text"
+            },
+            "82": {
+                "type": "text"
+            },
+            "83": {
+                "type": "text"
+            },
+            "84": {
+                "type": "text"
+            },
+            "85": {
+                "type": "text"
+            },
+            "86": {
+                "type": "text"
+            },
+            "87": {
+                "type": "text"
+            },
+            "88": {
+                "type": "text"
+            },
+            "89": {
+                "type": "text"
+            },
+            "90": {
+                "type": "text"
+            },
+            "91": {
+                "type": "text"
+            },
+            "92": {
+                "type": "text"
+            },
+            "93": {
+                "type": "text"
+            },
+            "94": {
+                "type": "text"
+            },
+            "95": {
+                "type": "text"
+            },
+            "96": {
+                "type": "text"
+            },
+            "97": {
+                "type": "text"
+            },
+            "98": {
+                "type": "text"
+            },
+            "99": {
+                "type": "text"
+            },
+            "100": {
+                "type": "text"
+            },
+            "101": {
+                "type": "text"
+            },
+            "102": {
+                "type": "text"
+            },
+            "103": {
+                "type": "text"
+            },
+            "104": {
+                "type": "text"
+            },
+            "105": {
+                "type": "text"
+            },
+            "106": {
+                "type": "text"
+            },
+            "107": {
+                "type": "text"
+            },
+            "108": {
+                "type": "text"
+            }
+        }
+    }
+}
