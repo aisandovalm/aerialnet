@@ -1,0 +1,37 @@
+{
+  "region": {
+    "clase": {
+      "type": "dropdown",
+      "description": "",
+      "options": {
+        "Vehículo": "Vehículo",
+        "Pickup": "Pickup",
+        "Bus": "Bus",
+        "Camión": "Camión",
+        "Tractor": "Tractor",
+        "Maquinaria": "Maquinaria",
+        "Animal": "Animal",
+        "Tuberia": "Tuberia",
+        "Escombro": "Escombro",
+        "Estructura": "Estructura",
+        "Pallet": "PalletCaja",
+        "Entrada": "Entrada/Portón",
+        "GHorquilla": "Grúa horquilla",
+        "Piscina": "Piscina o estanque artificial",
+        "Troncos": "Troncos",
+        "Zanja": "Zanja",
+        "Cilindro": "Cilindro",
+        "Poste": "Poste eléctrico"
+      },
+      "default_options": {
+        "Poste": true
+      }
+    },
+    "map_to_class_id": {
+      "type": "text"
+    }
+  },
+  "file": {
+    
+  }
+}

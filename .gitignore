@@ -5,6 +5,7 @@ utils/*
 11_classes/*
 shared_utils/*
 __pycache__/
+*/__pycache__/*
 *.egg-info
 dist/
 build/
