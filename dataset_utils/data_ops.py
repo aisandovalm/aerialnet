@@ -6,24 +6,6 @@ import io
 CLASSES_MAP = ['Techo', 'Vehículo', 'Pickup', 'Camión', 'Carga/Container', 'Tractor', 'Maquinaria', 'Animal', 'Tuberia/Escombros', 'Juegos/Plaza', 'Piscina/Estanque']
 
 def filter_classes(file, dataVersion, justMaq=True, outputDir=None):
-    # Read classes
-    CLASSES_FILE = os.path.join('../datasets/data', dataVersion, 'CLASSES')
-    if not os.path.exists(CLASSES_FILE):
-        print('File with info of classes: {} not found, create that file and try again'.format(CLASSES_FILE))
-        return
-
-    classesName = []
-    file_attributes = ''
-    with open(CLASSES_FILE, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-        for line in lines:
-            classNum, className = line.split(',')
-            className = className.replace('\n', '')
-            classesName.append(className)
-            file_attributes += '{},{} '.format(classNum, className)
-
-    print('Keeping the following classes: {}'.format(classesName))
-
     with open(file, 'r') as f:
         jsonDict = json.load(f)
 
@@ -32,25 +14,17 @@ def filter_classes(file, dataVersion, justMaq=True, outputDir=None):
         haveMaq = False
         for region in imgObj['regions']:
             className = region['region_attributes']['clase']
-            classIdx = classesName.index(className)
-            if className in classesName:
-                print('Keeping region with class: {}'.format(className))
-                if className == 'Pickup':
-                    region['region_attributes']['map_to_class_id'] = 1
-                    region['region_attributes']['clase'] = 'Vehículo'
-                newRegions.append(region)
-                if className == 'Maquinaria':
-                    haveMaq = True
-            else:
-                print('Deleting class {}'.format(className))
+            newRegions.append(region)
+            if className == 'Maquinaria':
+                haveMaq = True
 
         jsonDict[idx]['regions'] = newRegions
 
         # Delete image if there is not Maquinaria
         if justMaq and not haveMaq:
             print('Deleting image at idx {}'.format(idx))
-            jsonDict[idx] = []
-
+            jsonDict.pop(idx)
+            
     if outputDir is None:
         outputDir = os.path.dirname(file)
     with io.open(os.path.join(outputDir, 'viaJsonFile.json'), 'w', encoding='utf8') as f:
