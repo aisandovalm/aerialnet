@@ -1,0 +1,76 @@
+{
+  "_via_settings": {
+    "ui": {
+        "annotation_editor_height": 25,
+        "annotation_editor_fontsize": 0.8,
+        "leftsidebar_width": 18,
+        "image_grid": {
+            "img_height": 80,
+            "rshape_fill": "none",
+            "rshape_fill_opacity": 0.3,
+            "rshape_stroke": "yellow",
+            "rshape_stroke_width": 2,
+            "show_region_shape": true,
+            "show_image_policy": "all"
+        },
+        "image": {
+            "region_label": "clase",
+            "region_color": "clase",
+            "region_label_font": "10px Sans",
+            "on_image_annotation_editor_placement": "NEAR_REGION"
+        }
+    },
+    "core": {
+        "buffer_size": 18,
+        "filepath": {},
+        "default_filepath": ""
+    },
+    "project": {
+        "name": "VIA-KAUEL"
+    }
+  },
+  "_via_img_metadata": {},
+  "_via_attributes":{
+    "region": {
+      "clase": {
+        "type": "dropdown",
+        "description": "",
+        "options": {
+          "Animal": "Animal",
+          "Basural": "Basural",
+          "Bus": "Bus",
+          "Camión": "Camión",
+          "Chasis": "Chasis",
+          "Cilindro": "Cilindro",
+          "Entrada": "Entrada/Portón",
+          "Escombro": "Escombro",
+          "Estructura": "Estructura",
+          "GHorquilla": "Grúa horquilla",
+          "Juegos": "Juegos",
+          "Maquinaria": "Maquinaria",
+          "MConstrucción": "MConstrucción",
+          "PalletCaja": "PalletCaja",
+          "Persona": "Persona",
+          "Pickup": "Pickup",
+          "Piscina": "Piscina o estanque artificial",
+          "Poste": "Poste eléctrico",
+          "SAdvertencia": "SAdvertencia",
+          "Tractor": "Tractor",
+          "Troncos": "Troncos",
+          "Tuberia": "Tuberia",
+          "Vehículo": "Vehículo",
+          "Zanja": "Zanja"
+        },
+        "default_options": {
+          "Poste": true
+        }
+      },
+      "map_to_class_id": {
+        "type": "text"
+      }
+    },
+    "file": {
+    
+    }
+  }
+}

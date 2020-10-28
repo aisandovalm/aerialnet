@@ -50,68 +50,6 @@
       ga('create', 'UA-20555581-2', 'auto');
       ga('set', 'page', 'via-2.0.0.html');
       ga('send', 'pageview');
-
-      document.addEventListener("DOMContentLoaded", function() {
-          console.log("cargando...");
-          //project_open_select_project_file();
-          //document.getElementById("open_project_btn").dispatchEvent(new Event('click'));
-          var jsonConfig = {
-              "_via_settings": {
-                  "ui": {
-                      "annotation_editor_height": 25,
-                      "annotation_editor_fontsize": 0.8,
-                      "leftsidebar_width": 18,
-                      "image_grid": {
-                          "img_height": 80,
-                          "rshape_fill": "none",
-                          "rshape_fill_opacity": 0.3,
-                          "rshape_stroke": "yellow",
-                          "rshape_stroke_width": 2,
-                          "show_region_shape": true,
-                          "show_image_policy": "all"
-                      },
-                      "image": {
-                          "region_label": "clase",
-                          "region_color": "clase",
-                          "region_label_font": "10px Sans",
-                          "on_image_annotation_editor_placement": "NEAR_REGION"
-                      }
-                  },
-                  "core": {
-                      "buffer_size": 18,
-                      "filepath": {},
-                      "default_filepath": ""
-                  },
-                  "project": {
-                      "name": "ENAP2.0"
-                  }
-              },
-              "_via_img_metadata": {},
-              "_via_attributes": {
-                  "region": {
-                      "clase": {
-                          "type": "dropdown",
-                          "description": "",
-                          "options": {
-                              "Vehículo": "1. Vehículo",
-                              "Camión": "2. Camión",
-                              "Tractor": "3. Tractor",
-                              "Maquinaria": "4. Maquinaria",
-                              "Animal": "5. Animal",
-                              "Tuberia": "6. Tuberia",
-                              "Escombro": "7. Escombro",
-                              "EstrucMetal": "8. EstrucMetal",
-                              "PalletCaja": "9. PalletCaja"
-                          },
-                          "default_options": {
-                              "PalletCaja": true
-                          }
-                      }
-                  }
-              }
-          };
-          project_open_init(JSON.stringify(jsonConfig));
-      });
     </script>
 
 <!-- START: Contents of file: via.css-->
@@ -665,17 +603,6 @@ ul.region_shape .selected { fill:#ffffff; stroke:#ff0000; }
           <div id="img_fn_list"></div>
           <p>
             <div class="button_panel">
-              <!--<span class="button" onclick="sel_local_images()" title="Add new file from local disk">Add Files</span>
-              <span class="button" onclick="project_file_add_url_with_input()" title="Add new file using URL">Add URL</span>-->
-              <!--<span class="button" onclick="project_file_add_url_with_json()" title="Get images">Cargar json</span>-->
-                <select style="width:100%" id="entorno" onchange="entorno_select()" title="Entorno">
-                    <option value="produccion">Producción</option>
-                    <option value="testing">Testing</option>
-                </select>
-              <input type="text" placeholder="ID de usuario" id="id_usuario" title="ID de usuario" />
-              <span class="button" onclick="project_file_add_url_from_api()" title="Get images">Obtener imágenes</span>
-              <span class="button" onclick="send_labels('json')" title="Send annotations">Enviar trabajo</span>
-              <br><br>
               <span class="button" onclick="images_remove_with_confirm()" title="Remove images">Vaciar cola de imágenes</span>
             </div>
           </p>
