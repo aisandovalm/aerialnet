@@ -50,6 +50,8 @@ cd packages/ml_api
 ## 9. Test app
 ```sh
 curl -X GET "http://192.168.1.5:5000/health"
+
+curl -X GET "http://40.74.226.100:5000/health"
 curl -X GET "http://localhost:5000/health"
 ```
 ```sh
