@@ -14,6 +14,7 @@ logs/
 logs/
 *.pb
 *.7z
+*.zip
 *.jpg
 *.JPG
 saved_models/variables/*

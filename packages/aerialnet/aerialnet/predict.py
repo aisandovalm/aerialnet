@@ -24,7 +24,7 @@ grpcStub = prediction_service_pb2_grpc.PredictionServiceStub(grpcChannel)
  
 #_logger = logging.getLogger(__name__)
 
-THRESHOLD = 0.53
+THRESHOLD = 0.68
 def make_prediction(imgBytesContent, imgURL, generateOutputImg=False, outputPath=None):
     """Make a prediction using a saved model pipeline.
  

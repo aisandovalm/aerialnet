@@ -103,45 +103,33 @@ def get_class_idx(dict, classId=None, className=None):
 
 # Construct argument parser
 ap = argparse.ArgumentParser()
-ap.add_argument("-m", "--mode", help="Mode: 'train' to generate train and val datasets, 'test' to generate test dataset")
-ap.add_argument("-b", "--datasetBaseDir", help = "Path to dataset base directory")
-ap.add_argument("-v", "--datasetVersion", help = "Version of the dataset, ie: v3")
-ap.add_argument("-c", "--classesFilePath", help = "Path to classes file")
-ap.add_argument("-i", "--inputFilePath", help = "Path to test dataset in VIA JSON format")
-ap.add_argument("-t", "--trainFilePath", help = "Path to the train file to write the output")
-ap.add_argument("-a", "--valFilePath", help = "Path to the validation file to write the output")
-ap.add_argument("-o", "--testFilePath", help = "Path to the test file to write the output")
-ap.add_argument("-p", "--patchSize", default = 1000, type = int, help = "size of square image in px")
-ap.add_argument("-s", "--split", default = 0.95, type = float, help = "train/val split")
-ap.add_argument("-k", "--keepEmpty", default = False, type = bool, help = "If we keep patch images with 0 labels")
+ap.add_argument("--mode", help="Mode: 'train' to generate train and val datasets, 'test' to generate test dataset")
+ap.add_argument("--datasetSourceDir", help = "Path to dataset source directory")
+ap.add_argument("--datasetVersionDir", help = "Path to the directory to write the output imgs")
+ap.add_argument("--classesFilePath", help = "Path to classes file")
+ap.add_argument("--trainOutputCSV", help = "Path to the train file to write the output")
+ap.add_argument("--valOutputCSV", help = "Path to the validation file to write the output")
+ap.add_argument("--testOutputCSV", help = "Path to the test file to write the output")
+ap.add_argument("--patchSize", default = 1000, type = int, help = "size of square image in px")
+ap.add_argument("--split", default = 0.95, type = float, help = "train/val split")
+ap.add_argument("--keepEmpty", default = False, action='store_true', help = "If we keep patch images with 0 labels")
 
 args = vars(ap.parse_args())
 
 # build paths and create var names for all arguments
 # inputs
 if args['mode'] == 'train':
-    DATASET_BASE_DIR = args['datasetBaseDir']
-    DATASET_VERSION = args["datasetVersion"]
-    DATASET_VERSION_DIR = os.path.join(DATASET_BASE_DIR, DATASET_VERSION)
-
-    OUTPUT_CSV_TRAIN = args['trainFilePath']
-    OUTPUT_CSV_VAL = args['valFilePath']
-
-    CLASSES_FILE = args['classesFilePath']
-
-    PATCH_SIZE = args["patchSize"]
-    STRIDE = PATCH_SIZE-200
-    train_val_split = args["split"]
-    KEEP_EMPTY = args["keepEmpty"]
+    STRIDE = args["patchSize"]-200
+    OUTPUT_IMGS_PATH = os.path.join(args["datasetVersionDir"], 'imgs')
+    os.makedirs(OUTPUT_IMGS_PATH, exist_ok=True)
 if args['mode'] == 'test':
-    CLASSES_FILE = args['classesFilePath']
     INPUT_TEST_FILE = args['inputFilePath']
 
     OUTPUT_CSV_TEST = args['testFilePath']
 
 # Read classes
 classesDict = []
-with open(CLASSES_FILE, 'r') as f:
+with open(args['classesFilePath'], 'r') as f:
     lines = f.readlines()
     for line in lines:
         classNum, className = line.split(',')
@@ -152,11 +140,11 @@ print("[INFO] creating dataset with {} classes: {}".format(len(classesDict), cla
 if args["mode"] == 'train':
     # Generate list of files
     fileList = []
-    for (dirpath, _, filenames) in os.walk(DATASET_VERSION_DIR):
-        jsonFiles = [os.path.abspath(os.path.join(dirpath, fileName)) for fileName in filenames if fileName.endswith('.json')]
+    for (dirpath, _, filenames) in os.walk(args['datasetSourceDir']):
+        jsonFiles = [os.path.abspath(os.path.join(dirpath, fileName)) \
+            for fileName in filenames if (fileName.endswith('.json') and "SOURCE" in fileName)]
         fileList.extend(jsonFiles)
     print('[INFO] Found {} annotation files (JSON): {}'.format(len(fileList), fileList))
-
     
     #sys.exit()
     random.seed(0.1)
@@ -172,14 +160,12 @@ if args["mode"] == 'train':
     no_valImg = 0
 
     # open the output CSV files
-    with open(OUTPUT_CSV_TRAIN, "w") as trainCSV, open(OUTPUT_CSV_VAL, "w") as valCSV:
+    with open(args['trainOutputCSV'], "w") as trainCSV, open(args['valOutputCSV'], "w") as valCSV:
         trainWriter = csv.writer(trainCSV)
         valWriter = csv.writer(valCSV)
 
         # loop over annotation files
         for ANNOTATION_PATH in fileList:
-            # get dir
-            currentDir = os.path.dirname(ANNOTATION_PATH)
             # read next annotation file
             with open(ANNOTATION_PATH, 'r') as dataset:
                 # load content
@@ -188,12 +174,12 @@ if args["mode"] == 'train':
                 # loop over images
                 for imgAnnIdx in jsonDataset:
                     imgAnn = jsonDataset[imgAnnIdx]
-                    dType = random.choices(['train', 'val'], weights=(train_val_split, 1-train_val_split), k=1)[0]
+                    dType = random.choices(['train', 'val'], weights=(args["split"], 1-args["split"]), k=1)[0]
                     # generate corresponding annotation path
 
                     # get data
                     print('[INFO] Analizing image: {}'.format(imgAnn['filename']))
-                    cvImg, imgLocalPath, imgName = get_img(imgAnn['filename'], currentDir)
+                    cvImg, imgLocalPath, imgName = get_img(imgAnn['filename'], OUTPUT_IMGS_PATH)
                     
                     if cvImg is None:
                         continue
@@ -202,8 +188,8 @@ if args["mode"] == 'train':
                     imgHeight, imgWidth, _ = cvImg.shape
 
                     #############################################
-                    no_xPatches = math.ceil(imgWidth / PATCH_SIZE)
-                    no_yPatches = math.ceil(imgHeight / PATCH_SIZE)
+                    no_xPatches = math.ceil(imgWidth / args["patchSize"])
+                    no_yPatches = math.ceil(imgHeight / args["patchSize"])
                     no_Patches = 0
 
                     for xP in range(no_xPatches):
@@ -212,25 +198,25 @@ if args["mode"] == 'train':
                             # get patch boundaries
                             if xP == no_xPatches - 1:
                                 xPMax = imgWidth
-                                xPMin = xPMax - PATCH_SIZE
+                                xPMin = xPMax - args["patchSize"]
                             else:
                                 xPMin = xP * STRIDE
-                                xPMax = xPMin + PATCH_SIZE
+                                xPMax = xPMin + args["patchSize"]
                             if yP == no_yPatches - 1:
                                 yPMax = imgHeight
-                                yPMin = yPMax - PATCH_SIZE
+                                yPMin = yPMax - args["patchSize"]
                             else:
                                 yPMin = yP * STRIDE
-                                yPMax = yPMin + PATCH_SIZE
+                                yPMax = yPMin + args["patchSize"]
 
                             no_Patches += 1
                             bboxPatch = (xPMin, yPMin, xPMax, yPMax)
                             imgPatch = cvImg[yPMin:yPMax, xPMin:xPMax, :]
 
                             if '.jpg' in imgName:
-                                fnamePatch = os.path.join(currentDir, imgName.replace('.jpg', '_'+str(no_Patches)+'.jpg'))
+                                fnamePatch = os.path.join(OUTPUT_IMGS_PATH, imgName.replace('.jpg', '_'+str(no_Patches)+'.jpg'))
                             elif '.JPG' in imgName:
-                                fnamePatch = os.path.join(currentDir, imgName.replace('.JPG', '_'+str(no_Patches)+'.jpg'))
+                                fnamePatch = os.path.join(OUTPUT_IMGS_PATH, imgName.replace('.JPG', '_'+str(no_Patches)+'.jpg'))
                             fnameCSV_l = fnamePatch.split('/')[2:]
                             fnameCSV = '/'.join(fnameCSV_l)
 
@@ -257,13 +243,13 @@ if args["mode"] == 'train':
                                     newBBox = (bbox[0]-bboxPatch[0], bbox[1]-bboxPatch[1], bbox[2]-bboxPatch[0], bbox[3]-bboxPatch[1])
                                     #print('newBBox: {}'.format(newBBox))
                                     # truncate any bounding box coordinates that fall outside
-                                    xMin = min(max(0, int(newBBox[0])), PATCH_SIZE)
-                                    yMin = min(max(0, int(newBBox[1])), PATCH_SIZE)
-                                    xMax = min(max(0, int(newBBox[2])), PATCH_SIZE)
-                                    yMax = min(max(0, int(newBBox[3])), PATCH_SIZE)
+                                    xMin = min(max(0, int(newBBox[0])), args["patchSize"])
+                                    yMin = min(max(0, int(newBBox[1])), args["patchSize"])
+                                    xMax = min(max(0, int(newBBox[2])), args["patchSize"])
+                                    yMax = min(max(0, int(newBBox[3])), args["patchSize"])
                                     newBBox = (xMin, yMin, xMax, yMax)
 
-                                    #imgAnnPath = os.path.join(currentDir.split('/')[-1], os.path.basename(fnamePatch))
+                                    #imgAnnPath = os.path.join(args['datasetVersionDir'].split('/')[-1], os.path.basename(fnamePatch))
                                     item = [fnamePatch] + list(newBBox) + [_class]
                                     annPatch.append(item)
 
@@ -277,7 +263,8 @@ if args["mode"] == 'train':
                                     no_trainExamples += len(annPatch)
                                     save = True
                                 else:# empty image
-                                    if KEEP_EMPTY:
+                                    if args["keepEmpty"]:
+                                        print('keeping empty image: {}'.format(args["keepEmpty"]))
                                         item = [fnamePatch] + [None,None,None,None,None]
                                         annPatch.append(item)
                                         save = True
@@ -293,7 +280,7 @@ if args["mode"] == 'train':
                                     no_valExamples += len(annPatch)
                                     save = True
                                 else:# empty image
-                                    if KEEP_EMPTY:
+                                    if args["keepEmpty"]:
                                         item = [fnamePatch] + [None,None,None,None,None]
                                         annPatch.append(item)
                                         save = True
@@ -393,3 +380,6 @@ if args["mode"] == 'test':
     print(detailsPrint)
 
 print("[INFO] csv files completed")
+
+# TODO: 
+## 1. Generar automáticamente el archivo de classes.csv para RetinaNet
