@@ -86,17 +86,6 @@ curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/blobunityt
 curl --data "img_url=https://droneimagesstorage.blob.core.windows.net/blobunitytest/maquinaria_crop.jpg" --data "output_img=1" -X POST "http://40.74.226.100:5000/predict"
 ```
 
-## Useful commands to update AI
-1. Get api ID and kill it:
-    ```sh
-    ps aux | grep gunicorn
-    kill -9 ID
-    ```
-2. Upload saved_models.7z and uncompress it:
-    ```sh
-    7z x saved_model.7z
-    ```
-
 AI model was trained using the RetinaNet implementation from fizyr.com: https://github.com/fizyr/keras-retinanet
 
 Example results:
@@ -163,7 +152,10 @@ Example results:
 
 4. Abrir notebook notebooks/Creación_de_nuevo_dataset_desde_archivos_VIA.ipynb (inicializar jupyter notebook)
 
-5. Ingresar los datos para generar el nuevo dataset y seguir las instrucciones del notebook
+5. Ingresar los datos para generar el nuevo dataset y seguir las instrucciones del notebook.\
+Como resultado final luego de ejecutar el notebook anterior, dentro del subdirectorio '../datasets/data/v<numero_de_version>/' tendremos:
+    * dos archivos .csv con el dataset para entrenamiento (train.csv) y validación (val.csv)
+    * subdirectorio con las imágenes de 1000X1000 asociadas a ambos datasets
 
 6. Crear archivo classes.csv con el siguiente formato:
     ```
@@ -188,21 +180,42 @@ Example results:
     18,18
     19,19
     ```
-** En este caso el dataset contiene 19 clases
+** En este caso el dataset contiene 20 clases
 
 7. Duplicar el último archivo de AerialNet_vx.ipynb y modificar los parámetros según corresponda. Luego seguir las instrucciones del notebook.
 
 ## Para crear nueva versión de producción
-1.- Actualizar versión en /home/aikauel/enap/aerialnet_project/packages/aerialnet/aerialnet/VERSION
+1. Actualizar versión en ../packages/aerialnet/aerialnet/VERSION
 
-2.- Actualizar lectura y filtrado de clases en /home/aikauel/enap/aerialnet_project/packages/aerialnet/aerialnet/utils/predictions.py
+2. Actualizar lectura y filtrado de clases en ../packages/aerialnet/aerialnet/utils/predictions.py
 
-3.- Actualizar clases en /home/aikauel/enap/aerialnet_project/packages/aerialnet/aerialnet/utils/classes.py
+3. Actualizar clases en ../packages/aerialnet/aerialnet/utils/classes.py
 
-4.- Actualizar id de clases en /home/aikauel/enap/aerialnet_project/packages/aerialnet/aerialnet/data/classes.csv
+4. Actualizar id de clases en ../packages/aerialnet/aerialnet/data/classes.csv
 
-5.- Actualizar versión del modelo de IA en /home/aikauel/enap/aerialnet_project/packages/ml_api/api/controller.py
+5. Actualizar versión del modelo de IA en ../packages/ml_api/api/controller.py
 
-6.- Generar saved_model y guardarlo en /home/aikauel/enap/aerialnet_project/saved_models
+6. Generar saved_model y guardarlo en ../saved_models (ver AerialNet_vx.ipynb)
 
-7.- Continuar desde el punto 4 de la primera sección (Activate environment)
+7. Continuar desde el punto 4 de la primera sección (Activate environment)
+
+## Para subir nueva versión a producción
+1. Comprimir saved_models y subir al servidor
+
+2. Conectar al servidor, descargar saved_models y descomprimir:
+    ```sh
+    7z x saved_model.7z
+    ```
+    Para conectarse al servidor y tener un pseudo GUI lo mejor es utilizar la función SSH de Visual Studio Code.
+
+3. Obtener ID de la API y detener el proceso:
+    ```sh
+    ps aux | grep gunicorn
+    kill -9 ID
+    ```
+
+4. Obtener ID de tfserving y detener el proceso:
+    ```sh
+    nvidia-smi
+    kill -9 ID
+    ```
